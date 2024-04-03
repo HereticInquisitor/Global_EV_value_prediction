@@ -1,6 +1,6 @@
-pandas
 numpy
-seaborn 
-matplotlib
 scikit-learn
-tensorflow
+flask
+jinja2
+asyncio
+requests
