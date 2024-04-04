@@ -4,3 +4,4 @@ flask
 jinja2
 asyncio
 requests
+joblib

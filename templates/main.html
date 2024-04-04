@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>EV Predictor</title>
+
+  <!-- Favicons -->
+  <link href="static/img/favicon.jpg" rel="icon">
+  <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Vendor CSS Files -->
+  <link href="static/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="static/vendor/icofont/icofont.min.css" rel="stylesheet">
+  <link href="static/vendor/owl.carousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="static/vendor/remixicon/remixicon.css" rel="stylesheet">
+  <link href="static/vendor/venobox/venobox.css" rel="stylesheet">
+  <link href="static/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="static/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header-tops">
+    <div class="container">
+      <h1><a href="main.html">Global EV Value Prediction</a></h1>
+      <h2>We ensures to serve <span>a verified and certified value</span></h2>
+      <div class="social-links">
+        <input type="text" placeholder="Write Your Name" id="inputValue">
+        <a href="#about"><button class="btn" id="btn">Get Started</button></a>
+      </div>
+      <nav class="nav-menu d-none d-lg-block">
+        <ul>
+          <li class="active"><a href="#header">Home</a></li>
+          <li><a href="#about">Predictor</a></li>
+          <li><a href="#projects">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+
+    <!-- ======= About Me ======= -->
+    <div class="about-me container">
+      <div class="section-title">
+        <h2 id="username">Welcome Aayush</h2>
+        <p>Put your values for prediction here</p>
+      </div>
+    
+      <!-- ======= Form ======= -->
+      <div class="d-flex mb-3">
+        <div class="interests container mr-2">
+
+          <div class="section-title">
+            <h2>Your Selections</h2>
+          </div>
+  
+          <div class="row">
+            <div class="col-12 regionop">
+              <div class="icon-box">
+                <img src="static/img/region/Australia.png" id="regionimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="regionh3">Region</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 categoryop">
+              <div class="icon-box">
+                <img src="static/img/category/Historical.png" id="categoryimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="categoryh3">Category</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 parameterop">
+              <div class="icon-box">
+                <img src="static/img/parameter/electricitydemand.png" id="parameterimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="parameterh3">Parameter</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 modeop">
+              <div class="icon-box">
+                <img src="static/img/mode/Buses.png" id="modeimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="modeh3">Mode</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 powertrainop">
+              <div class="icon-box">
+                <i class="ri-database-2-line" style="color: #47aeff;"></i>
+                <h3 id="powertrainh3">Powertrain</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 yearop">
+              <div class="icon-box">
+                <i class="ri-gradienter-line" style="color: #ffa76e;"></i>
+                <h3 id="yearh3">Year</h3>
+              </div>
+            </div>
+            <div class="col-12 mt-md-2 unitop">
+              <div class="icon-box">
+                <img src="static/img/unit/GWh.png" id="unitimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="unith3">Unit</h3>
+              </div>
+            </div>
+          </div>
+  
+        </div>
+        <form class="form" id="form">
+          <h2>Select Options Here!!</h2>
+          <select id="region" name="region">
+            <option value="" disabled selected hidden>Select the Region</option>
+            <option value="Australia">Australia</option>
+            <option value="Austria">Austria</option>
+            <option value="Belgium">Belgium</option>
+            <option value="Brazil">Brazil</option>
+            <option value="Canada">Canada</option>
+            <option value="Chile">Chile</option>
+            <option value="China">China</option>
+            <option value="Denmark">Denmark</option>
+            <option value="EU27">EU27</option>
+            <option value="Europe">Europe</option>
+            <option value="Finland">Finland</option>
+            <option value="France">France</option>
+            <option value="Germany">Germany</option>
+            <option value="Greece">Greece</option>
+            <option value="Iceland">Iceland</option>
+            <option value="India">India</option>
+            <option value="Indonesia">Indonesia</option>
+            <option value="Israel">Israel</option>
+            <option value="Italy">Italy</option>
+            <option value="Japan">Japan</option>
+            <option value="Korea">Korea</option>
+            <option value="Mexico">Mexico</option>
+            <option value="Netherlands">Netherlands</option>
+            <option value="New Zealand">New Zealand</option>
+            <option value="Norway">Norway</option>
+            <option value="Other Europe">Other Europe</option>
+            <option value="Poland">Poland</option>
+            <option value="Rest of the world">Rest of the world</option>
+            <option value="South Africa">South Africa</option>
+            <option value="Spain">Spain</option>
+            <option value="Sweden">Sweden</option>
+            <option value="Switzerland">Switzerland</option>
+            <option value="Thailand">Thailand</option>
+            <option value="Turkey">Turkey</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="USA">USA</option>
+            <option value="World">World</option>
+          </select>
+          <select id="category" name="category">
+            <option value="" disabled selected hidden>Select the Category</option>
+            <option value="Historical">Historial</option>
+            <option value="Projection-APS">Projection-APS</option>
+            <option value="Projection-STEPS">Projection-STEPS</option>
+          </select>
+          <select id="parameter" name="parameter">
+            <option value="" disabled selected hidden>Select the Parameter</option>
+            <option value="EV stock">EV stock</option>
+            <option value="EV sales share">EV sales share</option>
+            <option value="EV stock share">EV stock share</option>
+            <option value="EV sales">EV sales</option>
+            <option value="EV charging points">EV charging points</option>
+            <option value="Electricity demand">Electricity  demand</option>
+            <option value="Oil displacement Mbd">Oil displacement Mbd</option>
+            <option value="Oil displacement, million lge">Oil displacement, million lge</option>
+            
+          </select>
+          <select id="mode" name="mode">
+            <option value="" disabled selected hidden>Select the Mode</option>
+            <option value="Buses">Buses</option>
+            <option value="Cars">Cars</option>
+            <option value="EV">EV</option>
+            <option value="Trucks">Trucks</option>
+            <option value="Vans">Vans</option>
+          </select>
+          <select id="powertrain" name="powertrain">
+            <option value="" disabled selected hidden>Select the Powertrain</option>
+            <option value="BEV">BEV</option>
+            <option value="EV">EV</option>
+            <option value="PHEV">PHEV</option>
+            <option value="Publicly available fast">Publicly available fast</option>
+          </select>
+          <select id="year" name="year">
+            <option value="" disabled selected hidden>Select the Year</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+            <option value="2014">2014</option>
+            <option value="2015">2015</option>
+            <option value="2016">2016</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+            <option value="2019">2019</option>
+            <option value="2020">2020</option>
+            <option value="2021">2021</option>
+            <option value="2022">2022</option>
+            <option value="2025">2025</option>
+            <option value="2030">2030</option>
+          </select>
+          <select id="unit" name="unit">
+            <option value="" disabled selected hidden>Select the Unit</option>
+            <option value="Vehicles">Vehicles</option>
+            <option value="percent">Percent</option>
+            <option value="charging points">Charging Points</option>
+            <option value="GWh">GWh</option>
+            <option value="Milion barrels per day">Milion Barrels Per Day</option>
+            <option value="Oil displacement">Oil Displacement</option>
+            <option value="million lge">Million LGE</option>
+          </select>
+          <button class="btn" type="button" onclick="sendData()">Predict</button>
+        </form>
+      </div>
+      <!-- ======= Interests ======= -->
+      <div class="interests container mb-3">
+
+        <div class="section-title">
+          <h2>Model Prediction</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-4">
+            <div class="icon-box">
+              <i class="ri-store-line" style="color: #ffbb2c;"></i>
+              <h3>Predicted Value</h3>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8">
+            <div class="icon-box">
+              <i class="ri-bar-chart-box-line" style="color: transparent;"></i>
+              <h3 id="valuepred">{{ value_pred}}</h3>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+       
+  <!-- ======= Projects Section ======= -->
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="testimonials container">
+
+        <div class="section-title">
+          <h2>Testimonials</h2>
+        </div>
+
+        <div class="owl-carousel testimonials-carousel">
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Your designs are nice. They truly looks attractive,however not completely functioning website. I would suggest you to work over Backend part.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="static/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+            <h3>Sumit Dey</h3>
+            <h4>Backend Developer</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              I love the way you are presenting the components on your webpage. Your color choices are nice. Keep up with your working and keep IMPROVING.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="static/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+            <h3>Ayush Raj</h3>
+            <h4>ML Engineer</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Great WebPages Man!! You would be great web designer soon. I would really ask you once to work for me as well. God bless you Boy.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="static/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
+            <h3>Shubham Jaiswal</h3>
+            <h4>Data Analyst</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              I am happy with your work. I was really lucky to get you as Frontend Developer for my E-commerce Website. Thanks for all your effort.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="static/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
+            <h3>Bhuneshwar Prasad</h3>
+            <h4>BusinessMan</h4>
+          </div>
+
+          <div class="testimonial-item">
+            <p>
+              <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+              Your things are not completely of your own, picked from previously available sources. Although you gave good touch to them by your side.
+              <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+            </p>
+            <img src="static/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
+            <h3>Prabhakar Kumar</h3>
+            <h4>Manager</h4>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Submission page -->
+  <script>
+    function sendData() {
+      var region = document.getElementById("region").value;
+      var category = document.getElementById("category").value;
+      var parameter = document.getElementById("parameter").value;
+      var mode = document.getElementById("mode").value;
+      var powertrain = document.getElementById("powertrain").value;
+      var year = document.getElementById("year").value;
+      var unit = document.getElementById("unit").value;
+
+      var formData = {
+        region: region,
+        category: category,
+        parameter: parameter,
+        mode: mode,
+        powertrain: powertrain,
+        year: year,
+        unit: unit
+      };
+      console.log('value: ',formData);
+      $.ajax({
+        url: '/submit',
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function(response) {
+          console.log('response:',response[0][0]);
+          document.getElementById('valuepred').innerHTML = response[0][0];
+        },
+        error: function(error) {
+          console.log('Fucked Up: ', error);
+        }
+      });
+    }
+</script>
+
+  
+  <!-- Vendor JS Files -->
+  <script src="static/vendor/jquery/jquery.min.js"></script>
+  <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="static/vendor/jquery.easing/jquery.easing.min.js"></script>
+  <script src="static/vendor/waypoints/jquery.waypoints.min.js"></script>
+  <script src="static/vendor/counterup/counterup.min.js"></script>
+  <script src="static/vendor/owl.carousel/owl.carousel.min.js"></script>
+  <script src="static/vendor/venobox/venobox.min.js"></script>
+
+  <script src="static/index.js"></script>
+  <script src="https://kit.fontawesome.com/70fa5628c6.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
