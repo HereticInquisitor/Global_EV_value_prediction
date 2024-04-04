@@ -8,7 +8,7 @@
   <title>EV Predictor</title>
 
   <!-- Favicons -->
-  <link href="static/img/favicon.jpg" rel="icon">
+  <link href="static/img/cargreen.png" rel="icon">
   <link href="static/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Vendor CSS Files -->
@@ -28,12 +28,21 @@
   <!-- ======= Header ======= -->
   <header id="header" class="header-tops">
     <div class="container">
-      <h1><a href="main.html">Global EV Value Prediction</a></h1>
+      {% if prompt == 0 %}
+      <h1><a href="/">Global EV Value Prediction</a></h1>
       <h2>We ensures to serve <span>a verified and certified value</span></h2>
       <div class="social-links">
         <input type="text" placeholder="Write Your Name" id="inputValue">
         <a href="#about"><button class="btn" id="btn">Get Started</button></a>
       </div>
+      {% else %}
+      <h1><a href="main.html">Global EV Value Prediction</a></h1>
+      <h2>Here is your <span>Predicted Value</span></h2>
+      <div class="social-links">
+        <input type="text" placeholder="{{ value_pred }}" id="inputValue">
+        <a href="#about"><button class="btn" id="btn">Next Pred</button></a>
+      </div>
+      {% endif %}
       <nav class="nav-menu d-none d-lg-block">
         <ul>
           <li class="active"><a href="#header">Home</a></li>
@@ -63,6 +72,12 @@
           </div>
   
           <div class="row">
+            <div class="col-12 mt-md-2 unitop">
+              <div class="icon-box">
+                <img src="static/img/unit/GWh.png" id="unitimg" class="mr-2" style="width:35px; " alt="aus">
+                <h3 id="unith3">Unit</h3>
+              </div>
+            </div>
             <div class="col-12 regionop">
               <div class="icon-box">
                 <img src="static/img/region/Australia.png" id="regionimg" class="mr-2" style="width:35px; " alt="aus">
@@ -77,7 +92,7 @@
             </div>
             <div class="col-12 mt-md-2 parameterop">
               <div class="icon-box">
-                <img src="static/img/parameter/electricitydemand.png" id="parameterimg" class="mr-2" style="width:35px; " alt="aus">
+                <img src="static/img/parameter/EV sales.png" id="parameterimg" class="mr-2" style="width:35px; " alt="aus">
                 <h3 id="parameterh3">Parameter</h3>
               </div>
             </div>
@@ -99,108 +114,11 @@
                 <h3 id="yearh3">Year</h3>
               </div>
             </div>
-            <div class="col-12 mt-md-2 unitop">
-              <div class="icon-box">
-                <img src="static/img/unit/GWh.png" id="unitimg" class="mr-2" style="width:35px; " alt="aus">
-                <h3 id="unith3">Unit</h3>
-              </div>
-            </div>
           </div>
   
         </div>
-        <form class="form" id="form">
+        <form class="form" id="form" action="/submit" method="post">
           <h2>Select Options Here!!</h2>
-          <select id="region" name="region">
-            <option value="" disabled selected hidden>Select the Region</option>
-            <option value="Australia">Australia</option>
-            <option value="Austria">Austria</option>
-            <option value="Belgium">Belgium</option>
-            <option value="Brazil">Brazil</option>
-            <option value="Canada">Canada</option>
-            <option value="Chile">Chile</option>
-            <option value="China">China</option>
-            <option value="Denmark">Denmark</option>
-            <option value="EU27">EU27</option>
-            <option value="Europe">Europe</option>
-            <option value="Finland">Finland</option>
-            <option value="France">France</option>
-            <option value="Germany">Germany</option>
-            <option value="Greece">Greece</option>
-            <option value="Iceland">Iceland</option>
-            <option value="India">India</option>
-            <option value="Indonesia">Indonesia</option>
-            <option value="Israel">Israel</option>
-            <option value="Italy">Italy</option>
-            <option value="Japan">Japan</option>
-            <option value="Korea">Korea</option>
-            <option value="Mexico">Mexico</option>
-            <option value="Netherlands">Netherlands</option>
-            <option value="New Zealand">New Zealand</option>
-            <option value="Norway">Norway</option>
-            <option value="Other Europe">Other Europe</option>
-            <option value="Poland">Poland</option>
-            <option value="Rest of the world">Rest of the world</option>
-            <option value="South Africa">South Africa</option>
-            <option value="Spain">Spain</option>
-            <option value="Sweden">Sweden</option>
-            <option value="Switzerland">Switzerland</option>
-            <option value="Thailand">Thailand</option>
-            <option value="Turkey">Turkey</option>
-            <option value="United Kingdom">United Kingdom</option>
-            <option value="USA">USA</option>
-            <option value="World">World</option>
-          </select>
-          <select id="category" name="category">
-            <option value="" disabled selected hidden>Select the Category</option>
-            <option value="Historical">Historial</option>
-            <option value="Projection-APS">Projection-APS</option>
-            <option value="Projection-STEPS">Projection-STEPS</option>
-          </select>
-          <select id="parameter" name="parameter">
-            <option value="" disabled selected hidden>Select the Parameter</option>
-            <option value="EV stock">EV stock</option>
-            <option value="EV sales share">EV sales share</option>
-            <option value="EV stock share">EV stock share</option>
-            <option value="EV sales">EV sales</option>
-            <option value="EV charging points">EV charging points</option>
-            <option value="Electricity demand">Electricity  demand</option>
-            <option value="Oil displacement Mbd">Oil displacement Mbd</option>
-            <option value="Oil displacement, million lge">Oil displacement, million lge</option>
-            
-          </select>
-          <select id="mode" name="mode">
-            <option value="" disabled selected hidden>Select the Mode</option>
-            <option value="Buses">Buses</option>
-            <option value="Cars">Cars</option>
-            <option value="EV">EV</option>
-            <option value="Trucks">Trucks</option>
-            <option value="Vans">Vans</option>
-          </select>
-          <select id="powertrain" name="powertrain">
-            <option value="" disabled selected hidden>Select the Powertrain</option>
-            <option value="BEV">BEV</option>
-            <option value="EV">EV</option>
-            <option value="PHEV">PHEV</option>
-            <option value="Publicly available fast">Publicly available fast</option>
-          </select>
-          <select id="year" name="year">
-            <option value="" disabled selected hidden>Select the Year</option>
-            <option value="2010">2010</option>
-            <option value="2011">2011</option>
-            <option value="2012">2012</option>
-            <option value="2013">2013</option>
-            <option value="2014">2014</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-            <option value="2021">2021</option>
-            <option value="2022">2022</option>
-            <option value="2025">2025</option>
-            <option value="2030">2030</option>
-          </select>
           <select id="unit" name="unit">
             <option value="" disabled selected hidden>Select the Unit</option>
             <option value="Vehicles">Vehicles</option>
@@ -208,35 +126,31 @@
             <option value="charging points">Charging Points</option>
             <option value="GWh">GWh</option>
             <option value="Milion barrels per day">Milion Barrels Per Day</option>
-            <option value="Oil displacement">Oil Displacement</option>
-            <option value="million lge">Million LGE</option>
+            <option value="Oil displacement, million lge">Oil Displacement, million lge</option>
           </select>
-          <button class="btn" type="button" onclick="sendData()">Predict</button>
+          <select id="region" name="region">
+            <option value="" disabled selected hidden>Select the Region</option>
+          </select>
+          <select id="category" name="category">
+            <option value="" disabled selected hidden>Select the Category</option>
+          </select>
+          <select id="parameter" name="parameter">
+            <option value="" disabled selected hidden>Select the Parameter</option>
+          </select>
+          <select id="mode" name="mode">
+            <option value="" disabled selected hidden>Select the Mode</option>
+          </select>
+          <select id="powertrain" name="powertrain">
+            <option value="" disabled selected hidden>Select the Powertrain</option>
+          </select>
+          <select id="year" name="year">
+            <option value="" disabled selected hidden>Select the Year</option>
+          </select>
+          <button class="btn" type="submit" id="form">Predict</button>
         </form>
       </div>
       <!-- ======= Interests ======= -->
-      <div class="interests container mb-3">
-
-        <div class="section-title">
-          <h2>Model Prediction</h2>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-3 col-md-4">
-            <div class="icon-box">
-              <i class="ri-store-line" style="color: #ffbb2c;"></i>
-              <h3>Predicted Value</h3>
-            </div>
-          </div>
-          <div class="col-lg-9 col-md-8">
-            <div class="icon-box">
-              <i class="ri-bar-chart-box-line" style="color: transparent;"></i>
-              <h3 id="valuepred">{{ value_pred}}</h3>
-            </div>
-          </div>
-        </div>
-
-      </div>
+      
     </div>
   </section>
        
@@ -348,8 +262,6 @@
       });
     }
 </script>
-
-  
   <!-- Vendor JS Files -->
   <script src="static/vendor/jquery/jquery.min.js"></script>
   <script src="static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

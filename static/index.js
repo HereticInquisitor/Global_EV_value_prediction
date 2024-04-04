@@ -4,7 +4,7 @@
   // Nav Menu
   $(document).on(
     "click",
-    ".nav-menu a, .mobile-nav a, .social-links a",
+    ".nav-menu a, .mobile-nav a, .social-links a, .form button",
     function (e) {
       if (
         location.pathname.replace(/^\//, "") ==
@@ -83,13 +83,287 @@
     }
   }
 
-  // $(document).ready(function () {
-  //   $(".form").submit(function (event) {
-  //     event.preventDefault();
-  //     var selectedSection = $("#valuePred")[0];
-  //     selectedSection.scrollIntoView({ behavior: "smooth" });
-  //   });
-  // });
+  //Working on the filteration of options...
+  $(document).ready(function () {
+    // Define the state and city data
+    var Region = {
+      Vehicles: [
+        "Australia",
+        "Austria",
+        "Belgium",
+        "Brazil",
+        "Canada",
+        "Chile",
+        "China",
+        "Denmark",
+        "EU27",
+        "Europe",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Iceland",
+        "India",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Korea",
+        "Mexico",
+        "Netherlands",
+        "New Zealand",
+        "Norway",
+        "Other Europe",
+        "Poland",
+        "Portugal",
+        "Rest of the world",
+        "South Africa",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Turkiye",
+        "United Kingdom",
+        "USA",
+        "World",
+      ],
+      percent: [
+        "Australia",
+        "Austria",
+        "Belgium",
+        "Brazil",
+        "Canada",
+        "Chile",
+        "China",
+        "Denmark",
+        "EU27",
+        "Europe",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Iceland",
+        "India",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Korea",
+        "Mexico",
+        "Netherlands",
+        "New Zealand",
+        "Norway",
+        "Other Europe",
+        "Poland",
+        "Portugal",
+        "Rest of the world",
+        "South Africa",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Turkiye",
+        "United Kingdom",
+        "USA",
+        "World",
+      ],
+      "charging points": [
+        "Australia",
+        "Austria",
+        "Belgium",
+        "Brazil",
+        "Canada",
+        "Chile",
+        "China",
+        "Denmark",
+        "Europe",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Iceland",
+        "India",
+        "Indonesia",
+        "Israel",
+        "Italy",
+        "Japan",
+        "Korea",
+        "Mexico",
+        "Netherlands",
+        "New Zealand",
+        "Norway",
+        "Poland",
+        "Portugal",
+        "Rest of the world",
+        "South Africa",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Thailand",
+        "Turkiye",
+        "United Kingdom",
+        "USA",
+        "World",
+      ],
+      GWh: ["China", "Europe", "India", "Rest of the world", "USA", "World"],
+      "Milion barrels per day": [
+        "China",
+        "Europe",
+        "India",
+        "Rest of the world",
+        "USA",
+        "World",
+      ],
+      "Oil displacement, million lge": [
+        "China",
+        "Europe",
+        "India",
+        "Rest of the world",
+        "USA",
+        "World",
+      ],
+    };
+    var Category = {
+      Vehicles: ["Historical", "Projection-STEPS", "Projection-APS"],
+      percent: ["Historical", "Projection-APS", "Projection-STEPS"],
+      "charging points": ["Historical", "Projection-STEPS"],
+      GWh: ["Historical", "Projection-STEPS", "Projection-APS"],
+      "Milion barrels per day": [
+        "Historical",
+        "Projection-APS",
+        "Projection-STEPS",
+      ],
+      "Oil displacement, million lge": [
+        "Historical",
+        "Projection-APS",
+        "Projection-STEPS",
+      ],
+    };
+    var Parameter = {
+      Vehicles: ["EV stock", "EV sales"],
+      percent: ["EV sales share", "EV stock share"],
+      "charging points": ["EV charging points"],
+      GWh: ["Electricity demand"],
+      "Milion barrels per day": ["Oil displacement Mbd"],
+      "Oil displacement, million lge": ["Oil displacement, million lge"],
+    };
+    var Mode = {
+      Vehicles: ["Cars", "Buses", "Vans", "Trucks"],
+      percent: ["Cars", "Buses", "Vans", "Trucks"],
+      "charging points": ["EV"],
+      GWh: ["Buses", "Trucks", "Vans", "Cars"],
+      "Milion barrels per day": ["Buses", "Trucks", "Vans", "Cars"],
+      "Oil displacement, million lge": ["Buses", "Trucks", "Vans", "Cars"],
+    };
+    var Powertrain = {
+      Vehicles: ["BEV", "PHEV"],
+      percent: ["EV"],
+      "charging points": ["Publicly available fast", "Publicly available slow"],
+      GWh: ["EV"],
+      "Milion barrels per day": ["EV"],
+      "Oil displacement, million lge": ["EV"],
+    };
+    var Year = {
+      Vehicles: [
+        2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+        2010, 2025, 2030,
+      ],
+      percent: [
+        2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022,
+        2010, 2025, 2030,
+      ],
+      "charging points": [
+        2017, 2018, 2019, 2020, 2021, 2022, 2011, 2012, 2013, 2014, 2015, 2016,
+        2025, 2030, 2010,
+      ],
+      GWh: [
+        2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+        2022, 2025, 2030,
+      ],
+      "Milion barrels per day": [
+        2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+        2022, 2025, 2030,
+      ],
+      "Oil displacement, million lge": [
+        2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021,
+        2022, 2025, 2030,
+      ],
+    };
+
+    // Function to populate the state dropdown based on the selected country
+    $("#unit").change(function () {
+      var unit = $(this).val();
+      var region = Region[unit];
+      var category = Category[unit];
+      var parameter = Parameter[unit];
+      var mode = Mode[unit];
+      var powertrain = Powertrain[unit];
+      var year = Year[unit];
+      $("#region").empty();
+      $("#category").empty();
+      $("#parameter").empty();
+      $("#mode").empty();
+      $("#powertrain").empty();
+      $("#year").empty();
+
+      if (region) {
+        $.each(region, function (index, region) {
+          $("#region").append(
+            `<option value="" disabled selected hidden>Select the Region </option>`
+          );
+          $("#region").append(
+            '<option value="' + region + '">' + region + "</option>"
+          );
+        });
+      }
+      if (category) {
+        $.each(category, function (index, category) {
+          $("#category").append(
+            `<option value="" disabled selected hidden>Select the Category</option>`
+          );
+          $("#category").append(
+            '<option value="' + category + '">' + category + "</option>"
+          );
+        });
+      }
+      if (parameter) {
+        $.each(parameter, function (index, parameter) {
+          $("#parameter").append(
+            `<option value="" disabled selected hidden>Select the Parameter</option>`
+          );
+          $("#parameter").append(
+            '<option value="' + parameter + '">' + parameter + "</option>"
+          );
+        });
+      }
+      if (mode) {
+        $.each(mode, function (index, mode) {
+          $("#mode").append(
+            `<option value="" disabled selected hidden>Select the Mode</option>`
+          );
+          $("#mode").append(
+            '<option value="' + mode + '">' + mode + "</option>"
+          );
+        });
+      }
+      if (powertrain) {
+        $.each(powertrain, function (index, powertrain) {
+          $("#powertrain").append(
+            `<option value="" disabled selected hidden>Select the Powertrain</option>`
+          );
+          $("#powertrain").append(
+            '<option value="' + powertrain + '">' + powertrain + "</option>"
+          );
+        });
+      }
+      if (year) {
+        $.each(year, function (index, year) {
+          $("#year").append(
+            `<option value="" disabled selected hidden>Select the Year</option>`
+          );
+          $("#year").append(
+            '<option value="' + year + '">' + year + "</option>"
+          );
+        });
+      }
+    });
+  });
 
   //Getting the name for prediction_page
   $(document).ready(function () {
@@ -158,6 +432,8 @@
     delay: 10,
     time: 1000,
   });
+
+  
 
   $(".testimonials-carousel").owlCarousel({
     autoplay: true,

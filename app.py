@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template("main.html")
+    return render_template("main.html",prompt=0)
 
 # def verify1(input):
 
@@ -19,32 +19,32 @@ def home():
 def page1():
     input=[]
     if request.method == "POST":
-        data = request.json
-        region = data.get("region")
-        input.append(region)
-        category = data.get("category")
-        input.append(category)
-        parameter = data.get("parameter")
-        input.append(parameter)
-        mode = data.get("mode")
-        input.append(mode)
-        powertrain = data.get("powertrain")
-        input.append(powertrain)
-        year = data.get("year")
-        input.append(year)
-        unit = data.get("unit")
-        input.append(unit)
+        # data = request.json
+        # region = data.get("region")
+        # input.append(region)
+        # category = data.get("category")
+        # input.append(category)
+        # parameter = data.get("parameter")
+        # input.append(parameter)
+        # mode = data.get("mode")
+        # input.append(mode)
+        # powertrain = data.get("powertrain")
+        # input.append(powertrain)
+        # year = data.get("year")
+        # input.append(year)
+        # unit = data.get("unit")
+        # input.append(unit)
 
     # Process the data as needed
-        print(region, category, parameter, mode, powertrain, year, unit)
-        # input= [request.form.get("region"),
-        #         request.form.get("category"),
-        #         request.form.get("parameter"),
-        #         request.form.get("mode"),
-        #         request.form.get("powertrain"),
-        #         request.form.get("year"),
-        #         request.form.get("unit")
-        #         ]
+        # print(region, category, parameter, mode, powertrain, year, unit)
+        input= [request.form.get("region"),
+                request.form.get("category"),
+                request.form.get("parameter"),
+                request.form.get("mode"),
+                request.form.get("powertrain"),
+                request.form.get("year"),
+                request.form.get("unit")
+                ]
         print(input)
         for i in input:
             if len(i)==0:
@@ -77,8 +77,8 @@ def page1():
                 # result = {'result':result}
                 print(result)
                 # result = result.tolist()
-                json_result= json.dumps(result)
-                return render_template("main.html", value_pred=12345)
+                #json_result= json.dumps(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
                 # return jsonify(result)
                 # print(result)
                     # print("error")
@@ -110,10 +110,12 @@ def page1():
                 print("Result",result)
                 # result = {'result':result}
                 print(result)
-                result = result.tolist()
-                json_result= json.dumps(result)
+                # result = result.tolist()
+                # json_result= json.dumps(result)
                 # return render_template("main.html", data=result)
-                return jsonify(result)
+                # return jsonify(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
+
                 
                 # print(result)
 
@@ -143,10 +145,12 @@ def page1():
                 print("Result",result)
                 # result = {'result':result}
                 print(result)
-                result = result.tolist()
-                json_result= json.dumps(result)
+                # result = result.tolist()
+                # json_result= json.dumps(result)
                 # return render_template("main.html", data=result)
-                return jsonify(result)
+                # return jsonify(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
+
                 
                 # print(result)
 
@@ -177,10 +181,12 @@ def page1():
                 print("Result",result)
                 # result = {'result':result}
                 print(result)
-                result = result.tolist()
-                json_result= json.dumps(result)
+                # result = result.tolist()
+                # json_result= json.dumps(result)
                 # return render_template("main.html", data=result)
-                return jsonify(result)
+                # return jsonify(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
+
                 
                 # print(result)
 
@@ -210,10 +216,12 @@ def page1():
                 print("Result",result)
                 # result = {'result':result}
                 print(result)
-                result = result.tolist()
-                json_result= json.dumps(result)
+                # result = result.tolist()
+                # json_result= json.dumps(result)
                 # return render_template("main.html", data=result)
-                return jsonify(result)
+                # return jsonify(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
+
                 
                 # print(result)
 
@@ -244,15 +252,18 @@ def page1():
                 print("Result",result)
                 # result = {'result':result}
                 print(result)
-                result = result.tolist()
-                json_result= json.dumps(result)
+                # result = result.tolist()
+                # json_result= json.dumps(result)
                 # return render_template("main.html", data=result)
-                return jsonify(result)
+                # return jsonify(result)
+                return render_template("main.html",prompt=1 ,value_pred=result[0][0])
+
                 
                 # print(result)
             
             else:
-                return render_template('error')
+                # return render_template('error')
+                pass
         
         except:
             return "error"
