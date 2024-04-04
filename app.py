@@ -2,7 +2,6 @@ from flask import *
 import os
 import requests
 import joblib
-
 import numpy as np
 
 
@@ -15,7 +14,7 @@ def home():
 # def verify1(input):
 
 
-@app.route('/submit',methods=["POST"])
+@app.route('/submit',methods=["POST","GET"])
 def page1():
     input=[]
     if request.method == "POST":
@@ -48,7 +47,7 @@ def page1():
         print(input)
         for i in input:
             if len(i)==0:
-                return render_template('submit.html')
+                return 
         try:
             if input[6] == 'Vehicles':
                 # if verify1(input) ==False:
@@ -229,7 +228,7 @@ def page1():
             elif input[6] == 'Oil displacement, million lge':
                 # if verify6(input) ==False:
                 #     return render_template("error.html")
-                model= joblib.load('mmodel/odel6.pkl')
+                model= joblib.load('model/model6.pkl')
                 X_scaler = joblib.load('scaler/X_scaler6.pkl')
                 Y_scaler = joblib.load('scaler/Y_scaler6.pkl')
                 encoder= joblib.load('encoder/encoder6.pkl')
@@ -263,10 +262,13 @@ def page1():
             
             else:
                 # return render_template('error')
-                pass
+                return redirect("/")
         
-        except:
-            return "error"
+        except Exception as e:
+            print("Error:-",type(e).__name__)
+            return "Error"
+    else:
+        return redirect("/")
 
 if __name__ == '__main__':
     app.run(debug=True)
